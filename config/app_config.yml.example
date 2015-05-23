@@ -1,0 +1,11 @@
+development:
+  :meetup:
+    :api_key: 'fake_key'
+
+test:
+  :meetup:
+    :api_key: 'fake_key'
+
+production:
+  meetup:
+    :api_key: 'fake_key'

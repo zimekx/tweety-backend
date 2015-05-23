@@ -33,3 +33,7 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+/config/app_config.yml
+
+/.idea/*

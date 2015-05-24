@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   skip_before_filter :verify_authenticity_token
 
   before_filter :cors_preflight_check
+  before_filter :set_current_user
+
   after_filter :cors_set_access_control_headers
 
   def cors_set_access_control_headers
@@ -22,5 +24,11 @@ class ApplicationController < ActionController::Base
 
       render text: '', content_type: 'text/plain'
     end
+  end
+
+  def set_current_user
+    facebook_user = FacebookService.fetch_user(params['accessToken'])
+
+    @current_user = User.find_by(email: facebook_user.email)
   end
 end

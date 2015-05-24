@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_current_user
-    facebook_user = FacebookService.fetch_user(params['accessToken'])
+    facebook_user = FacebookService.fetch_user(request.headers['access_token'])
 
     @current_user = User.find_by(email: facebook_user.email)
   end

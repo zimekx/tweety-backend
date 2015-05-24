@@ -43,7 +43,6 @@ class MeetupService
   end
 
   def parse_event(e)
-    require 'pry'; binding.pry
     {
       venue: e['venue'],
       name: e['name'],

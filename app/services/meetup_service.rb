@@ -1,3 +1,6 @@
+include ActionView::Helpers::SanitizeHelper
+
+
 class MeetupService
   attr_reader :client
 
@@ -6,8 +9,14 @@ class MeetupService
   end
 
   def event(event_id)
-    event = client.events(event_id: event_id)['results'][0]
-    parse_event(event)
+    response = client.events(event_id: event_id)
+
+    if response['results'].present?
+      event = response['results'][0]
+      parse_event(event)
+    else
+      nil
+    end
   end
 
   def event_comments(event_id)
@@ -34,12 +43,13 @@ class MeetupService
   end
 
   def parse_event(e)
+    require 'pry'; binding.pry
     {
       venue: e['venue'],
       name: e['name'],
-      description: e['description'],
+      description: strip_tags(e['description']),
       participants: e['yes_rsvp_count'],
-      meetup_id: e['id,'],
+      meetup_id: e['id'],
       start_time: e['time'] / 1000,
       url: e['event_url'],
       group: e['group']['name'],

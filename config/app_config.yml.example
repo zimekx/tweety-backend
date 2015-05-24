@@ -1,11 +1,27 @@
 development:
   :meetup:
     :api_key: 'fake_key'
+  :twitter:
+    :consumer_key: 'fake'
+    :consumer_secret: 'fake'
+    :access_token: 'fake'
+    :access_secret: 'fake'
+
 
 test:
   :meetup:
     :api_key: 'fake_key'
+  :twitter:
+    :consumer_key: 'fake'
+    :consumer_secret: 'fake'
+    :access_token: 'fake'
+    :access_secret: 'fake'
 
 production:
   meetup:
     :api_key: 'fake_key'
+  :twitter:
+    :consumer_key: 'fake'
+    :consumer_secret: 'fake'
+    :access_token: 'fake'
+    :access_secret: 'fake'

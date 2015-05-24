@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'meetup_client' , git: 'https://github.com/zimekx/meetup_client'
+gem 'twitter'
 
 group :development, :test do
   gem 'byebug'

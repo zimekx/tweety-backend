@@ -25,25 +25,25 @@ class MeetupService
 
   def parse_comment(event_id, c)
     {
-        meetup_event_id: event_id,
-        meetup_id: c['event_comment_id'],
-        comment: c['comment'],
-        member: c['member_name'],
-        meetup_member_id: c['member_id']
+      meetup_event_id: event_id,
+      source_id: c['event_comment_id'],
+      content: c['comment'],
+      member: c['member_name'],
+      meetup_member_id: c['member_id']
     }
   end
 
   def parse_event(e)
     {
-        venue: e['venue'],
-        name: e['name'],
-        description: e['description'],
-        participants: e['yes_rsvp_count'],
-        meetup_id: e['id,'],
-        start_time: e['time'] / 1000,
-        url: e['event_url'],
-        group: e['group']['name'],
-        group_url: e['group']['urlname']
+      venue: e['venue'],
+      name: e['name'],
+      description: e['description'],
+      participants: e['yes_rsvp_count'],
+      meetup_id: e['id,'],
+      start_time: e['time'] / 1000,
+      url: e['event_url'],
+      group: e['group']['name'],
+      group_url: e['group']['urlname']
     }
   end
 end

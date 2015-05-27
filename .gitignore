@@ -37,3 +37,5 @@ bower.json
 /config/app_config.yml
 
 /.idea/*
+# Ignore application configuration
+/config/application.yml

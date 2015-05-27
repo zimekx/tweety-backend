@@ -19,6 +19,8 @@ gem 'fb_graph2'
 
 gem 'rack-cors', :require => 'rack/cors'
 
+gem 'figaro'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

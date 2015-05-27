@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150527212135) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20150527212135) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "comments", ["event_id"], name: "index_comments_on_event_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["event_id"], name: "index_comments_on_event_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -41,4 +44,6 @@ ActiveRecord::Schema.define(version: 20150527212135) do
     t.string   "facebook_id"
   end
 
+  add_foreign_key "comments", "events"
+  add_foreign_key "comments", "users"
 end

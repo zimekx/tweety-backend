@@ -1,27 +1,20 @@
 development:
-  :meetup:
-    :api_key: 'fake_key'
-  :twitter:
-    :consumer_key: 'fake'
-    :consumer_secret: 'fake'
-    :access_token: 'fake'
-    :access_secret: 'fake'
-
+  meetup_api_key: 'fake_key'
+  twitter_consumer_key: 'fake_key'
+  twitter_consumer_secret: 'fake_key'
+  twitter_access_token: 'fake_key'
+  twitter_access_secret: 'fake_key'
 
 test:
-  :meetup:
-    :api_key: 'fake_key'
-  :twitter:
-    :consumer_key: 'fake'
-    :consumer_secret: 'fake'
-    :access_token: 'fake'
-    :access_secret: 'fake'
+  meetup_api_key: 'fake_key'
+  twitter_consumer_key: 'fake_key'
+  twitter_consumer_secret: 'fake_key'
+  twitter_access_token: 'fake_key'
+  twitter_access_secret: 'fake_key'
 
 production:
-  meetup:
-    :api_key: 'fake_key'
-  :twitter:
-    :consumer_key: 'fake'
-    :consumer_secret: 'fake'
-    :access_token: 'fake'
-    :access_secret: 'fake'
+  meetup_api_key: 'fake_key'
+  twitter_consumer_key: 'fake_key'
+  twitter_consumer_secret: 'fake_key'
+  twitter_access_token: 'fake_key'
+  twitter_access_secret: 'fake_key'

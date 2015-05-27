@@ -13,6 +13,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'meetup_client' , git: 'https://github.com/zimekx/meetup_client'
 gem 'twitter'
+gem 'fb_graph2'
+
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development, :test do
   gem 'byebug'

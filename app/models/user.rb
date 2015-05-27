@@ -3,4 +3,5 @@ class User < ActiveRecord::Base
   enum type: [:commenter, :creator]
 
   validates :name, :login, :email, presence: true
+  validates :login, :email, uniqueness: true
 end

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     if access_token.present?
       facebook_user = FacebookService.fetch_user(access_token)
 
-      @current_user = User.find_by(email: facebook_user.id)
+      @current_user = User.find_by(facebook_id: facebook_user.id)
     end
   end
 end

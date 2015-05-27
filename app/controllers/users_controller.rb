@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     facebook_user = FacebookService.fetch_user(request.headers['X-Access-Token'])
 
     {
-      email: facebook_user.id, #facebook_user.email,
+      facebook_id: facebook_user.id,
       name: facebook_user.name,
       login: params[:user][:login],
       type: params[:user][:type] || :commenter

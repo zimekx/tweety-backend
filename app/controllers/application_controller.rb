@@ -14,5 +14,7 @@ class ApplicationController < ActionController::Base
 
       @current_user = User.find_by(facebook_id: facebook_user.id)
     end
+
+    @current_user ||= User.first
   end
 end

@@ -5,18 +5,18 @@ class TwitterService
     @client = init_client
   end
 
-  def search(tag, event_id = 1)
-    client.search("##{tag}", search_options).take(10).map { |tweet| parse_tweet(tweet, event_id) }
+  def search(tag, event_id)
+    client.search("##{tag}", search_options).take(5).map { |tweet| parse_tweet(tweet, event_id) }
   end
 
   private
 
-  def parse_tweet(t, event_id = 1)
+  def parse_tweet(t, event_id)
     {
       event_id: event_id,
-      source_id: t.id,
+      external_source_id: t.id,
       content: t.text,
-      author_name: t.user.name
+      external_user_name: t.user.name
     }
   end
 

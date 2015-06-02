@@ -15,6 +15,7 @@ class EventsController < ApplicationController
     if event_params = MeetupService.new.event(meetup_id)
       event = Event.create(event_params.select { |k, _| k.in? permitted_fields })
       MeetupWorker.perform_async(meetup_id)
+      TwitterWorker.perform_async(event.twitter_tag, event.id)
 
       render json: {event: event}, status: :ok
     else
@@ -37,6 +38,6 @@ class EventsController < ApplicationController
   end
 
   def permitted_fields
-    [:name, :description, :meetup_id]
+    [:name, :description, :meetup_id, :twitter_tag]
   end
 end

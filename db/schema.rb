@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602203126) do
+ActiveRecord::Schema.define(version: 20150602214856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150602203126) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "type"
-    t.integer  "external_source_id"
+    t.string   "external_source_id"
     t.string   "external_user_id"
     t.string   "external_user_name"
   end
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20150602203126) do
     t.integer  "meetup_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "twitter_tag"
   end
 
   create_table "users", force: :cascade do |t|

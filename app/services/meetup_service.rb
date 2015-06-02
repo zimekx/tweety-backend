@@ -1,6 +1,5 @@
 include ActionView::Helpers::SanitizeHelper
 
-
 class MeetupService
   attr_reader :client
 
@@ -8,8 +7,8 @@ class MeetupService
     @client = MeetupApi.new
   end
 
-  def event(event_id)
-    response = client.events(event_id: event_id)
+  def event(meetup_id)
+    response = client.events(event_id: meetup_id)
 
     if response['results'].present?
       event = response['results'][0]
@@ -19,9 +18,9 @@ class MeetupService
     end
   end
 
-  def event_comments(event_id)
-    client.event_comments(event_id: event_id)['results'].map do |comment|
-      parse_comment(event_id, comment)
+  def event_comments(meetup_id, event_id)
+    client.event_comments(event_id: meetup_id)['results'].map do |comment|
+      parse_comment(meetup_id, comment)
     end
   end
 
@@ -34,7 +33,7 @@ class MeetupService
 
   def parse_comment(event_id, c)
     {
-      event_id: Event.find_by(meetup_id: event_id).id,
+      event_id: event_id,
       external_source_id: c['event_comment_id'],
       content: c['comment'],
       external_user_name: c['member_name'],

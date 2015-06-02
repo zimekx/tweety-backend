@@ -13,8 +13,8 @@ class EventsController < ApplicationController
     meetup_id = extract_meetup_id(params[:meetup_link])
 
     if event_params = MeetupService.new.event(meetup_id)
-      event = Event.create(event_params.select { |k, _| k.in? permitted_fields })
-      MeetupWorker.perform_async(meetup_id)
+      event = Event.create(event_params.select { |k, _| k.in? permitted_fields }.merge(user: @current_user))
+      MeetupWorker.perform_async(meetup_id, event.id)
       TwitterWorker.perform_async(event.twitter_tag, event.id)
 
       render json: {event: event}, status: :ok
@@ -35,6 +35,8 @@ class EventsController < ApplicationController
 
   def extract_meetup_id(meetup_link)
     meetup_link.match(/events\/(\d+)\//)[1]
+  rescue
+    render json: {error: 'Invalid meetup link'}, status: :unprocessable_entity
   end
 
   def permitted_fields

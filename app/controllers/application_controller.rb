@@ -14,7 +14,11 @@ class ApplicationController < ActionController::Base
 
       @current_user = User.find_by(facebook_id: facebook_user.id)
     end
+  end
 
-    @current_user ||= User.first
+  def authenticate_user
+    if @current_user.nil?
+      head 403
+    end
   end
 end

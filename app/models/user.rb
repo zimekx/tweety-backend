@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   self.inheritance_column = :_type_disabled
   enum type: [:commenter, :creator]

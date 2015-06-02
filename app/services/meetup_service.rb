@@ -34,11 +34,11 @@ class MeetupService
 
   def parse_comment(event_id, c)
     {
-      meetup_event_id: event_id,
-      source_id: c['event_comment_id'],
+      event_id: Event.find_by(meetup_id: event_id).id,
+      external_source_id: c['event_comment_id'],
       content: c['comment'],
-      member: c['member_name'],
-      meetup_member_id: c['member_id']
+      external_user_name: c['member_name'],
+      external_user_id: c['member_id']
     }
   end
 

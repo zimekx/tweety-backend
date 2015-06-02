@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = RegularComment.new(comment_params)
     @comment.user = @current_user
 
     if @comment.save
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
   def destory
     @comment = Comment.find(params[:id])
 
-    if @current_user == @comment.user #|| @current_user == @comment.event.user
+    if @current_user == @comment.user || @current_user == @comment.event.user
       @comment.destroy
 
       head :ok

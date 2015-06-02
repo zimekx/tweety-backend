@@ -12,6 +12,7 @@ class EventsController < ApplicationController
 
     if event_params = MeetupService.new.event(meetup_id)
       event = Event.create(event_params.select { |k, _| k.in? permitted_fields })
+      MeetupWorker.perform_async(meetup_id)
 
       render json: {event: event}, status: :ok
     else

@@ -1,4 +1,7 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
 
   scope '/api/' do
     with_options defaults: {format: :json} do |r|

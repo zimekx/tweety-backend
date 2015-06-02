@@ -20,6 +20,8 @@ gem 'fb_graph2'
 gem 'rack-cors', :require => 'rack/cors'
 
 gem 'figaro'
+gem 'sidekiq'
+gem 'sinatra', require: nil
 
 group :development, :test do
   gem 'byebug'

@@ -35,8 +35,6 @@ class EventsController < ApplicationController
 
   def extract_meetup_id(meetup_link)
     meetup_link.match(/events\/(\d+)\//)[1]
-  rescue
-    render json: {error: 'Invalid meetup link'}, status: :unprocessable_entity
   end
 
   def permitted_fields

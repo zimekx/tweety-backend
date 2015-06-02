@@ -20,7 +20,7 @@ class MeetupService
 
   def event_comments(meetup_id, event_id)
     client.event_comments(event_id: meetup_id)['results'].map do |comment|
-      parse_comment(meetup_id, comment)
+      parse_comment(event_id, comment)
     end
   end
 

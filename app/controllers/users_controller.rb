@@ -22,8 +22,11 @@ class UsersController < ApplicationController
   end
 
   def validate
-    if @current_user.present?
-      head :ok
+    facebook_user = FacebookService.fetch_user(params[:access_token])
+
+    user = User.find_by(facebook_id: facebook_user.id) rescue nil
+    if user.present?
+      render json: {user_type: user.type}, status: :ok
     else
       head :not_found
     end

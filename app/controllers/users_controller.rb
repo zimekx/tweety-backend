@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    facebook_user = FacebookService.fetch_user(request.headers['X-Access-Token'])
+    facebook_user = FacebookService.fetch_user(params[:user][:access_token])
 
     {
       facebook_id: facebook_user.id,

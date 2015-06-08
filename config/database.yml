@@ -1,15 +1,25 @@
 default: &default
   adapter: postgresql
-  username: adamzima
-  password: ''
-  host: localhost
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
   database: tweety_dev
+  username: adamzima
+  password: ''
+  host: localhost
+
+production:
+  <<: *default
+  database: tweety_prod
+  host: <%= ENV['TWEETYAPP_DB_1_PORT_5432_TCP_ADDR'] %>
+  port: <%= ENV['TWEETYAPP_DB_1_PORT_5432_TCP_PORT'] %>
 
 test:
   <<: *default
   database: tweety_test
+  username: adamzima
+  password: ''
+  host: localhost
+

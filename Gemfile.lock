@@ -67,6 +67,8 @@ GEM
     equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.5.2)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     fb_graph2 (0.6.2)
@@ -220,6 +222,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  faker
   fb_graph2
   figaro
   jbuilder (~> 2.0)

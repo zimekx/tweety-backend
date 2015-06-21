@@ -15,8 +15,11 @@ class EventsController < ApplicationController
     if event_params = MeetupService.new.event(meetup_id)
       event = Event.create(event_params.select { |k, _| k.in? permitted_fields }.merge(user: @current_user,
                                                                                        twitter_tag: params[:twitter_tag]))
-      MeetupWorker.perform_async(meetup_id, event.id)
-      TwitterWorker.perform_async(event.twitter_tag, event.id)
+
+      unless Rails.env.test?
+        MeetupWorker.perform_async(meetup_id, event.id)
+        TwitterWorker.perform_async(event.twitter_tag, event.id)
+      end
 
       render json: {event: event}, status: :ok
     else

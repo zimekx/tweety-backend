@@ -8,6 +8,10 @@ class MeetupService
   end
 
   def event(meetup_id)
+    if Rails.env.test?
+      return fake_event(meetup_id)
+    end
+
     response = client.events(event_id: meetup_id)
 
     if response['results'].present?
@@ -38,6 +42,19 @@ class MeetupService
       content: c['comment'],
       external_user_name: c['member_name'],
       external_user_id: c['member_id']
+    }
+  end
+
+  def fake_event(meetup_id)
+    {
+      name: Faker::Lorem.sentence,
+      description: Faker::Lorem.paragraph,
+      participants: rand(1000),
+      meetup_id: meetup_id,
+      start_time: Faker::Time.forward(14, :evening).to_i,
+      url: Faker::Internet.url('meetup.com'),
+      group: Faker::Lorem.sentence,
+      group_url: Faker::Internet.url('meetup.com')
     }
   end
 

@@ -20,8 +20,8 @@ production:
 
 test:
   <<: *default
-  database: tweety_test
-  username: adamzima
-  password: ''
-  host: localhost
-
+  database: tweety_prod
+  username: postgres
+  encoding: unicode
+  host: <%= ENV['TWEETYAPP_DB_1_PORT_5432_TCP_ADDR'] %>
+  port: <%= ENV['TWEETYAPP_DB_1_PORT_5432_TCP_PORT'] %>

@@ -8,9 +8,7 @@ class MeetupService
   end
 
   def event(meetup_id)
-    if Rails.env.test?
-      return fake_event(meetup_id)
-    end
+    return fake_event(meetup_id)
 
     response = client.events(event_id: meetup_id)
 

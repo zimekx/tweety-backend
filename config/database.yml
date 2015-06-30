@@ -15,6 +15,7 @@ production:
   database: tweety_prod
   username: postgres
   encoding: unicode
+  pool: 25
   host: <%= ENV['TWEETYAPP_DB_1_PORT_5432_TCP_ADDR'] %>
   port: <%= ENV['TWEETYAPP_DB_1_PORT_5432_TCP_PORT'] %>
 

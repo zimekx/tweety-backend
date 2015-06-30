@@ -2,11 +2,11 @@ class EventsController < ApplicationController
   before_filter :authenticate_user, only: [:create, :destroy]
 
   def index
-    @events = Event.all
+    @events = Event.all.includes(:comments)
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:id]).includes(:comments)
   end
 
   def create

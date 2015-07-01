@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id]).includes(:comments)
+    @event = Event.find(params[:id])
   end
 
   def create

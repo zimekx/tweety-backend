@@ -3,6 +3,8 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all.includes(:comments)
+
+    render json: Oj.dump({events: @events.lightning}, mode: :compat)
   end
 
   def show

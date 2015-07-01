@@ -24,6 +24,7 @@ gem 'sidekiq'
 gem 'sinatra', require: nil
 
 gem 'faker'
+gem 'oj'
 
 group :development, :test do
   gem 'byebug'
